@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chai aur code</title>
+</head>
+<body style="background-color: #212121;color:#fff">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    /* add the list element with name python */
+    // 1.method
+    const li=document.createElement('li')
+    const textNode=document.createTextNode("python")
+    li.appendChild(textNode)
+    console.log(li)
+    const parent=document.querySelector('.language')
+    console.log(parent)
+    parent.appendChild(li)
+    // Method 2
+    function addLanguage(langName){
+        const li=document.createElement('li')
+        li.innerHTML=`${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("Kotlin")
+    //optimized way since we dont need to traverse the whole tree
+    function addOptiLang(langName){
+        const li=document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLang("golang")
+
+    //edit
+    const secLang=document.querySelector("li:nth-child(2)")
+    const newLi=document.createElement('li')
+    newLi.textContent="MOJO"
+    secLang.replaceWith(newLi)
+    const firstLang=document.querySelector("li:first-child")
+    firstLang.outerHTML="<li>Typescript<li>"
+</script>
+<style>
+    
+
+</style>
+</html>
+<!-- target 2 projects -->
