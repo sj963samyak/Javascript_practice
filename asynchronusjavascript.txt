@@ -1,0 +1,19 @@
+Javascript basics knowledge
+1.javascript
+	=>synchronous ->one after another
+	=>asynchronous javascript
+2.execution context
+	Each one weights for execution of first one to execute
+3.Blocking code vs non blocking code
+	=>blocking code=>block the file of program
+	=>non blocking code=>read file sync
+3.Js engine  				Web Api
+	
+	Memory Heap			DOM Api		
+	Call Stack			Set timeout
+	                    set interval
+						
+						
+When js engine call setinterval method callback goes to web api and it registers a callback and add the task in the task queue and pushes the task again into the stack after the particular timeout
+
+another method fetch it is based on priority and these are given a high priority as compared to task queue		
