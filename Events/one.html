@@ -1,0 +1,85 @@
+<!-- //target 4 images at a site -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: aliceblue;
+        }
+        .google{
+            color:aliceblue;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="boy"
+                    src="https://images.pexels.com/photos/18148932/pexels-photo-18148932/free-photo-of-woman-reading-book-on-a-bench.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="no image displayed"></li>
+            <li><img width="200px" id="oldman"
+                    src="https://images.pexels.com/photos/18107025/pexels-photo-18107025/free-photo-of-man-reading-newspaper.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="no image displayed"></li>
+            <li><img width="200px" id="coding"
+                    src="https://images.pexels.com/photos/7775641/pexels-photo-7775641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt="no image displayed"></li>
+            <li><img width="200px" id="temple"
+                    src="https://images.pexels.com/photos/3532560/pexels-photo-3532560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    alt=""></li>
+             <li><a id="google" href="http://google.com">Google</a></li>       
+        </ul>
+    </div>
+</body>
+<script>
+    document.getElementById('images').addEventListener('click',function(event){
+        // console.log('please click inside the ul')
+    },false)
+     document.getElementById('oldman').addEventListener('click',function(e){
+        // console.log("old man is reading a newspaper")
+        // e.stopPropagation()
+     },false) 
+     document.getElementById('google').addEventListener('click',function(e){
+        // console.log('google clicked')
+        e.preventDefault()  
+     },false)
+     document.getElementById('images').addEventListener('click',function(e){
+        console.log(e.target.parentNode)
+        // let removeIt=e.target.parentNode
+        // removeIt.remove()
+        console.log(e.target.tagName)//tag name is img
+        console.log(e.target.id)
+        if(e.target.tagName==='IMG'){
+            let removeIt=e.target.parentNode
+            removeIt.remove()
+        }
+     })
+    //  target when images are clicked then they disappear
+
+      /*
+        we can get mostly browser events and enviomnent events
+        1.type
+        2.timestamp
+        3.default prevent
+        4.target
+        5.toelement
+        6.source element
+        7.client position
+        8.offset and screen
+        9.special keys access
+        10.keycode access
+        false and true at the end of event propogation
+        bubbleOfEvents:-false and true are used for to propogate the events from bottom to top
+        true is used to propogate the events from top to bottom
+        e.stopPropagation() is used to stop bubbling of events
+      */
+</script>
+
+</html>
