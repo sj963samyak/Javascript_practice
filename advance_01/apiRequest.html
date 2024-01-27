@@ -1,43 +1,91 @@
-<!-- 0	UNSENT	Client has been created. open() not called yet.
-1	OPENED	open() has been called.
-2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
-3	LOADING	Downloading; responseText holds partial data.
-4	DONE	The operation is complete. -->
+<!-- 0 UNSENT Client has been created. open() not called yet.
+1 OPENED open() has been called.
+2 HEADERS_RECEIVED send() has been called, and headers and status are available.
+3 LOADING Downloading; responseText holds partial data.
+4 DONE The operation is complete.
+imp: cannot fetch json object values outside the object -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
-            background-color: black;
-            color:#fff;
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 40%;
+            border-radius: 5px;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            border-radius: 5px 5px 0 0;
+        }
+
+        .container {
+            padding: 2px 16px;
         }
     </style>
+
 </head>
+
 <body>
-    <h1>samyak</h1>
+
 </body>
 <script>
-    const reqUrl='https://api.github.com/users/sj963samyak'
-    const xhr=new XMLHttpRequest();
-    xhr.open('GET',reqUrl)//send the request
+    const reqUrl = 'https://api.github.com/users/sj963samyak'
+    let img
+    let followersCount
+    let loginId
+    const arr = []
+    console.log(arr)
+    console.log(arr[0])
+
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', reqUrl)//send the request
     console.log("samyak")
     console.log(xhr.readyState)//to print the ready state values
-    xhr.onreadystatechange=function(){
+    xhr.onreadystatechange = function () {
         console.log(xhr.readyState)
-        if(xhr.readyState===4){
-            const data=this.responseText// to print the text from api
+        if (xhr.readyState === 4) {
+            const data = this.responseText// to print the text from api
             console.log(data)
             console.log(typeof data)//string value
+            console.log(data.followers)//value is undefined beacuse type f data is string
             // to convert the string to json to retreive values
-            const dataJson=JSON.parse(this.responseText)
-            console.log(typeof dataJson)
-            console.log(dataJson.followers) // value of followers
-            
+            const dataJson = JSON.parse(this.responseText)
+            document.querySelector('body').innerHTML =
+                `
+           
+<h2>Round Card</h2>
+
+<div class="card">
+  <img src="${dataJson.avatar_url}" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>${dataJson.login}</b></h4> 
+    <p>Interior Designer</p> 
+  </div>
+</div>
+           `
         }
     }
+
+
+    // document.querySelector('.profile').innerHTML=`${loginId}`
+    // console.log(img)
+    // console.log("samyak" + arr[0].followers)
+
+
+
+    // task object photo and followers
+    // to make card so that photo and followers
     xhr.send()//to send the request
 </script>
+
 </html>
