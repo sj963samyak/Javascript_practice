@@ -61,11 +61,20 @@ const promiseFour = new Promise(function (resolve, reject) {
 
 const promiseFive=new Promise(function(resolve,reject){
     setTimeout(function () {
-        let error = false
+        let error = true
         if (!error)
             resolve({ userName: "samyak_jain", userId: "456" })
         else {
-            reject('async awaits gives error')
+            reject('this is the error given by async function')
         }
     }, 1000)
 })
+async function consumePromiseFive(){
+    try{
+        const response=await promiseFive
+        console.log(response)
+    }catch(error){
+        console.log(error);
+    }
+}
+consumePromiseFive()
