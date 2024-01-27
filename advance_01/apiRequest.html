@@ -1,0 +1,43 @@
+<!-- 0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>samyak</h1>
+</body>
+<script>
+    const reqUrl='https://api.github.com/users/sj963samyak'
+    const xhr=new XMLHttpRequest();
+    xhr.open('GET',reqUrl)//send the request
+    console.log("samyak")
+    console.log(xhr.readyState)//to print the ready state values
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState)
+        if(xhr.readyState===4){
+            const data=this.responseText// to print the text from api
+            console.log(data)
+            console.log(typeof data)//string value
+            // to convert the string to json to retreive values
+            const dataJson=JSON.parse(this.responseText)
+            console.log(typeof dataJson)
+            console.log(dataJson.followers) // value of followers
+            
+        }
+    }
+    xhr.send()//to send the request
+</script>
+</html>
