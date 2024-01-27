@@ -34,7 +34,7 @@ const promiseThree = new Promise(function (resolve, reject) {
 promiseThree.then(function (userObj) {
     console.log(userObj)
 })
-// method 4.
+// method 4. in this we have used promise chaining in this we passed the returned value of 1st promise to chained then object
 const promiseFour = new Promise(function (resolve, reject) {
     setTimeout(function () {
         let error = false
@@ -46,7 +46,7 @@ const promiseFour = new Promise(function (resolve, reject) {
     }, 1000)
 })
 
-// method four in this we have used promise chaining in this we passed the returned value of 1st promise to chained then object
+
     .then(function (user) {
         console.log(user)
         return user.userName
@@ -78,3 +78,44 @@ async function consumePromiseFive(){
     }
 }
 consumePromiseFive()
+
+
+//an api request to get all the users 
+
+async function getAllUsers(){
+    try {
+        const response=await fetch('https://jsonplaceholder.typicode.com/users')
+        const data=response.json()
+        console.log(data);
+    } catch (error) {
+        console.log("E:",error)
+    }
+}
+
+getAllUsers()
+//method 5 using the fetch api response to get all response
+
+fetch('https://jsonplaceholder.typicode.com/users').
+then((response)=>{return response.json()}).
+then((data)=>{
+    console.log("response is",data);
+}).
+catch((error)=>{
+    console.log(error);
+})
+
+
+// task call this api using xml http request
+//conclusion it will not work is uses the browser to send the html request
+const arr=[]
+const xhr1=new XMLHttpRequest()
+xhr1.open('GET',"https://jsonplaceholder.typicode.com/users")
+xhr1.onreadystatechange=function(){
+    console.log(xhr1.readyState)
+    if(xhr1.readyState===4)
+    console.log(this.responseText);
+    arr.push(this.responseText)
+    console.log(arr);
+}
+xhr1.send()
+console.log("array is",arr);
