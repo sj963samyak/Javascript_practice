@@ -10,14 +10,14 @@
 ## why we use oop
 object literal
 
--contructor function
--prototype
--classes
--instance keyword(new,this)
+- contructor function
+- prototype
+- classes
+- instance keyword(new,this)
 
 
 ## 4 pillars
--Abstraction
--encapsulation
--Inheritance
--polymorphism
+- Abstraction
+- encapsulation
+- Inheritance
+- polymorphism
